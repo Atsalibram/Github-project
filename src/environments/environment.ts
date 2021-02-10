@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl:"https://api.github.com/users/",
-  apiKey:"9cde2ba42d9a2626581098b290da33c203205aa5"
+  apiKey:"ede40e202b25067f0e0cee309ffc9887114040e2"
   
 };
 
