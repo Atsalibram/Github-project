@@ -65,7 +65,7 @@ export class GitRequestService {
     }
 
     let promise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>(environment.apiUrl + this.Username +"/repos?access_token="+environment.apiKey).toPromise().then(response=>{
+      this.http.get<ApiResponse>(environment.apiUrl + this.Username +"/repos?access_token=").toPromise().then(response=>{
         this.repos = response;
         resolve(response)
       }), 
