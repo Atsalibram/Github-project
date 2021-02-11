@@ -5,8 +5,11 @@
     background-repeat: no-repeat;
 }
 .welcome {
-    top: 50%;
+    top: 80%;
     left: 38%;
     text-align: center;
     color:white;
+}
+h2{
+    font-size: 300%;
 }
