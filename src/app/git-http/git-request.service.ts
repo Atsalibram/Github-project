@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { User } from '../user';
 import { Repository} from '../repository'
@@ -40,7 +40,7 @@ export class GitRequestService {
     }
 
     let promise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>(environment.apiUrl+this.Username+"?access_token=").toPromise().then(response=>{
+      this.http.get<ApiResponse>(environment.apiUrl+this.Username).toPromise().then(response=>{
         this.user.name = response.name
         this.user.login = response.login
         this.user.followers = response.followers
@@ -85,9 +85,10 @@ export class GitRequestService {
     avatar_url: string,
     url: string
     }
-
+    let headers = new HttpHeaders({'Authorization':'token '})
+    let options={headers:headers}
     let promise = new Promise((resolve,reject)=>{
-    this.http.get<ApiResponse>(environment.apiUrl + UserName + "?access_token=").toPromise().then(response=>{
+    this.http.get<ApiResponse>(environment.apiUrl + UserName).toPromise().then(response=>{
     this.user.name = response.name;
     this.user.login = response.login; 
     this.user.followers = response.followers;
@@ -107,7 +108,7 @@ export class GitRequestService {
     }
 
     let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResponse>(environment.apiUrl + UserName + "/repos?access_token=").toPromise().then(res => { 
+      this.http.get<ApiResponse>(environment.apiUrl + UserName).toPromise().then(res => { 
         this.repos = res;
           resolve(res);
             },
